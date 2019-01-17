@@ -32,6 +32,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rB.AddForce(-sidewaysForce * Time.deltaTime, 0, 0);
         }
+
     }
 }
-
