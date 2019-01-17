@@ -4,19 +4,34 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //Variable that is used to referance the Rigidbody component of the player behaviour
     public Rigidbody rB;
 
-    //// Start is called before the first frame update
+    public float fowardForce = 2000f;
+    public float sidewaysForce = 500f;
+
+    // Start is called before the first frame update
     //void Start()
     //{
-    //    rB.AddForce(0, 200, 500);//Adds force to the x, y, z axis of the player
+    //    rB.AddForce(0, 200, 500);
     //}
 
     // Update is called once per frame
-    //FixUpdate is used when you are messing with the physics on Unity
-    void FixUpdate()
+    //It's marked FixedUpdate() because I'm using it to work with the physics of Unity
+    void FixedUpdate()
     {
-        //Time.deltaTime fixes the frame rates on the computer
-        rB.AddForce(0, 0, 2000 * Time.deltaTime);
+        //Add a foward force
+        rB.AddForce(0, 0, fowardForce * Time.deltaTime); //AddForce() handles the x, y, and z axis of the player's movement
+
+        if (Input.GetKey("d"))
+        {
+            rB.AddForce(sidewaysForce * Time.deltaTime, 0, 0);
+        }
+
+        if (Input.GetKey("a"))
+        {
+            rB.AddForce(-sidewaysForce * Time.deltaTime, 0, 0);
+        }
     }
 }
+
