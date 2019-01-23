@@ -7,12 +7,14 @@ public class PlayerCollison : MonoBehaviour
 
     public PlayerMovement movement;
 
+
     //Unity has special methods for collisons and how to make them work in the game
     private void OnCollisionEnter(Collision collisionInfo)
     {
         if (collisionInfo.collider.tag == "Obstcale")
         {
             movement.enabled = false;
+            FindObjectOfType<GameManager>().GameOver();
         }
 
     }
